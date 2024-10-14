@@ -1,103 +1,158 @@
+#include<string>
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include<SFML/Graphics.hpp>
 using namespace std;
 
-#define punch 1
-#define feint 2
-#define defend 3
-
+int P_health = 30;
+int E_health = 30;
+int Weapon = 5;
+int Spell = 7;
+int Block = 0;
+bool stagger = false;
+int Mana = 10;
+int Special = 20;
+int choice;
+int click = 0;
+int Player_Choice();
+int Enemy_Choice();
 
 
 int main()
 {
-	int Player1 = 10;
-	int Player_Choice{};
-	int Player2;
-	int Computer = 10;
-	int Computer_Choice;
-	int Game_Select;
-	int Choice;
-	int punching = 3;
-	int feinting = 0;
-	int defending = 0;
-	bool Alive = true;
+   
+    
 
-	do {
-	cout << "How many players today" << endl;
-	cout << "1.) Ai" << endl;
-	cout << "2.) player" << endl;
-	cin >> Game_Select;
+    
+
+    cout << "Choose your Character \n\n";
+    cout << "1. Flame\n";
+    cout << "2. Jolt\n";
+    cout << "3. Chlora\n";
+    cout << "4. Divina\n";
+    cin >> choice;
 
 
-	
-		if (Game_Select == 1)
-		{
-			while (Alive){
-				if(Player1 <= 0|| Computer <= 0) 
-				{
-					Alive = false;
-				}
-				cout << "Player 1: " << Player1 << endl;
-				cout << "Computer: " << Computer << endl;
-				cout << "Choose your attack" << endl;
-				cin >> Choice;
-
-				srand((unsigned int)time(NULL));
-				Computer_Choice = (rand() % 3) + 1;
-				
-				if (Player_Choice == 1)
-				{
-					Computer = Computer - punching;
-				}
-				if (Player_Choice == 2)
-				{
-					if (Computer_Choice == 3)
-					{
-						feinting = 3;
-					}
-					Computer = Computer - feinting;
-				}
-				if (Player_Choice == 3)
-				{
-					Computer = Computer - defending;
-				}
+    switch (choice)
+    {
+        case 1: 
+            cout << "you chose flame \n";
+            break;
+        case 2:
+            cout << "you chose Jolt \n";
+            break;
+        case 3:
+            cout << "you chose Chlora \n";
+            break;
+        case 4:
+            cout << "you chose Divina \n";
+            break;
+        default:
+            cout << "Invalid choice!\n";
+            return 1; // Exit if invalid choice
+    }
+    
 
 
-				if (Computer_Choice == 1)
-				{
-					Player1 = Player1 - punching;
-				}
-				if (Computer_Choice == 2)
-				{
-					if (Player_Choice == 3)
-					{
-						feinting = 3;
-					}
-					Player1 = Player1 - feinting;
-				}
-				if (Computer_Choice == 3)
-				{
-					Player1 = Player1 - defending;
-				}
-			}
-		}
-		else
-		{
-			cout << "Option not available" << endl;
-		}
-	} while (Game_Select != 1);
+    while(E_health >= 0 && P_health >= 0)
+    {
+        Weapon = 5;
+        Player_Choice();
+        Enemy_Choice();
 
-	if(Player1 <= 0)
-	{
-		cout << "YOU LOSE!" << endl;
-	}
-	if (Computer <= 0)
-	{
-		cout << "YOU WIN!" << endl;
-	}
+        cout << "Enemy Health" << E_health << "\n";;
+        cout << "Player health" << P_health << "\n\n\n\n";
+    }
+    if (E_health <= 1)
+    {
+        cout << "YOU WON!!!";
+    }
+    else if (P_health <= 1)
+    {
+        cout << "YOU LOSE!!!";
+    }
 
 
-		return 0;
+    return 0;
+}
+
+int Player_Choice()
+{
+    
+    
+    cout << "Choose your move \n\n";
+    cout << "1. Sword\n";
+    cout << "2. Power\n";
+    cout << "3. block\n";
+    
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        cout << "You hit enemy with your\n\n";
+        cout << Weapon;
+        E_health = E_health - Weapon;
+
+        stagger = false;
+        break;
+    case 2:
+        cout << "You hit enemy with Sword\n\n";
+        E_health = E_health - Spell;
+
+        stagger = false;
+        break;
+    case 3:
+            cout << "You try to block the attack.\n\n";
+        if (stagger) {
+            cout << "Your block was broken; you can't block right now!\n\n";
+        }
+        else {
+            Weapon = 0;
+            stagger = true;
+            cout << "Your block was successful!\n";
+        }
+
+    }
+
+    if (stagger)
+    {
+        cout << "Your block needs time to recover\n\n";
+        
+    }
+    else
+    {
+        cout << "You can block again \n\n";
+    }
+
+    return 0;
+}
+
+int Enemy_Choice()
+{
+    int E_Choice = (1 + rand() % 3);
+
+    cout << E_Choice;
+    switch (E_Choice)
+    {
+    case 1:
+        cout << "The enemy hit you with Sword\n\n";
+        P_health -= Weapon;
+        break;
+    case 2:
+        cout << "The enemy hit you with Spell\n\n";
+        P_health -= Spell;
+        break;
+    case 3:
+        cout << "The enemy tries to block\n\n";
+        Weapon = 0;
+        break;
+    
+    default:
+        break;
+    }
+
+
+    return 0;
 }
