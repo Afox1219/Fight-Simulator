@@ -1,10 +1,13 @@
 #pragma once
+#include <SFML\Graphics.hpp>
 class Player
 {
 public:
 	char Name;
-	int Health = 0;
-	int power = 0;
+	char Weapon;
+	char Element;
+	int Health = 30;
+	int power = 5;
 	int speed = 0;
 	bool block = true;
 
