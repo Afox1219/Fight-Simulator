@@ -141,10 +141,14 @@
   <ItemGroup>
     <ClCompile Include="Fight  Simulator.cpp" />
     <ClCompile Include="Flame.cpp" />
+    <ClCompile Include="Jolt.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chlora.h" />
+    <ClInclude Include="Divina.h" />
     <ClInclude Include="Flame.h" />
+    <ClInclude Include="Jolt.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

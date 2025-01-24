@@ -24,12 +24,24 @@
     <ClCompile Include="Flame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Flame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jolt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chlora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Divina.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
