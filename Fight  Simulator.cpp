@@ -102,10 +102,10 @@ int main() {
         cout << "\n\n";
     }
 
-    if (enemy->getHealth() == 0) {
+    if (enemy->getHealth() < 0) {
         cout << "YOU WON!!!\n";
     }
-    else if (Player->getHealth() == 0) {
+    else if (Player->getHealth() < 0) {
         cout << "YOU LOSE!!!\n";
     }
 
