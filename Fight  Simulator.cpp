@@ -24,7 +24,7 @@ string enemy2 = "Jolt";
 string enemy3 = "Chlora";
 string enemy4 = "Divina";
 
-// Function Declarations
+// Function Declarations 
 int Player_Choice(Character* Player, Character* enemy);
 int Enemy_Choice(Character* Player, Character* enemy);
 
