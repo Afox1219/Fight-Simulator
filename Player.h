@@ -55,5 +55,4 @@ public:
     virtual void displayInfo() const {
         std::cout << "Character: " << name << ", Weapon: " << weapon << ", Health: " << health << ", Strength: " << strength << ", Agility: " << agility << ", Magic: " << magic << std::endl;
     }
-};
-
+};  

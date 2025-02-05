@@ -2,42 +2,34 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include<string>
 #include <cmath>
 #include "Flame.h"
 #include "Jolt.h"
 #include "Chlora.h"
 #include "Divina.h"
+#include "Combat.h"
 
 using namespace std;
 
 // Global variables for health, etc.
-int P_health = 30;
-int E_health = 30;
-int Weapon = 5;
-int Spell = 7;
-bool stagger = false;
-int choice, choice3;
 string Enemy;
 string enemy1 = "Flame";
 string enemy2 = "Jolt";
 string enemy3 = "Chlora";
 string enemy4 = "Divina";
-
-// Function Declarations  
-int Player_Choice(Character* Player, Character* enemy);
-int Enemy_Choice(Character* Player, Character* enemy);
+int choice;
+int choice3;
 
 int main() {
     Character* Player = nullptr;
     Character* enemy = nullptr;
 
     // Character selection for Player
-    cout << "Choose your Character \n\n";
-    cout << "1. Flame\n";
-    cout << "2. Jolt\n";
-    cout << "3. Chlora\n";
-    cout << "4. Divina\n";
+    cout << "Who Would You Like To Play As? \n\n";
+    cout << "1. The Immortal Pyromaniac: Flame\n";
+    cout << "2. The Envious Raijun: Jolt\n";
+    cout << "3. Nature's child: Chlora\n";
+    cout << "4. The Egotistical Angel: Divina\n";
     cin >> choice;
 
     switch (choice) {
@@ -90,85 +82,9 @@ int main() {
 
     cout << "You chose " << Enemy << " as your enemy\n\n";
 
-    // Game loop
-    while (E_health > 0 && P_health > 0) {
-        Player_Choice(Player, enemy); // Player's choice of action
-        Enemy_Choice(Player, enemy);  // Enemy's random choice
+    Combat combat;
+    combat.startBattle(Player, enemy);
 
-        // Print the health of player and enemy
-        cout << "\n\n";
-        Player->displayInfo();
-        enemy->displayInfo();
-        cout << "\n\n";
-    }
-
-    if (enemy->getHealth() == 0) {
-        cout << "YOU WON!!!\n";
-    }
-    else if (Player->getHealth() == 0) {
-        cout << "YOU LOSE!!!\n";
-    }
-
-    return 0;
-}
-
-// Function Definitions
-int Player_Choice(Character* Player, Character* enemy) {
-    cout << "Choose your move \n\n";
-    cout << "1. Sword\n";
-    cout << "2. Power\n";
-    cout << "3. Block\n";
-    cin >> choice;
-
-    switch (choice) {
-    case 1:
-        
-        
-        Player->attack(*enemy);
-        stagger = false;
-        break;
-    case 2:
-        cout << "You hit enemy with Power\n";
-        
-        Player->Magic1(*enemy);
-        stagger = false;
-        break;
-    case 3:
-        cout << "You try to block the attack.\n\n";
-        if (stagger) {
-            cout << "Your block was broken; you can't block right now!\n\n";
-        }
-        else {
-            Weapon = 0;
-            stagger = true;
-            cout << "Your block was successful!\n";
-        }
-        break;
-    default:
-        cout << "Invalid move!\n";
-        break;
-    }
-
-    return 0;
-}
-
-int Enemy_Choice(Character* Player, Character* enemy) {
-    int E_Choice = (1 + rand() % 3); // Random enemy move
-
-    switch (E_Choice) {
-    case 1:
-        enemy->attack(*Player);
-        
-        break;
-    case 2:
-        enemy->Magic1(*Player);
-        break;
-    case 3:
-        cout << enemy << " tries to block\n";
-        break;
-    default:
-        break;
-    }
-
+    delete Player;
     return 0;
 }

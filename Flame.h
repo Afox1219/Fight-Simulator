@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif // FLAME_H
+#endif // FLAME_H 
