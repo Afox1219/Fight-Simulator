@@ -6,7 +6,7 @@
 class Jolt : public Character {
 public:
     Jolt(const std::string& name)
-        : Character(name, "Kanabo", 150, 30, 35, 20) {}  // Custom health, strength, magic, and agility for Jolt
+        : Character(name, "Kanabo", "5", 150, 30, 35, 20,5) {}  // Custom health, strength, magic, and agility for Jolt
 
     // Overridden methods
     void attack(Character& target) override {
@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif // JOLT_H 
+#endif // JOLT_H  

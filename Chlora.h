@@ -6,7 +6,7 @@
 class Chlora : public Character {
 public:
     Chlora(const std::string& name)
-        : Character(name, "whip", 80, 30, 40, 25) {}  // Custom health, strength, magic, and agility for Chlora
+        : Character(name, "whip","5", 80, 30, 40, 25, 5) {}  // Custom health, strength, magic, and agility for Chlora
 
     // Overridden methods
     void attack(Character& target) override {
@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif // CHLORA_H
+#endif // CHLORA_H 

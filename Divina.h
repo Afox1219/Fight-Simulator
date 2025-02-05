@@ -6,7 +6,7 @@
 class Divina : public Character {
 public:
     Divina(const std::string& name)
-        : Character(name, "axe", 90, 40, 35, 30) {}  // Custom health, strength, magic, and agility for Divina
+        : Character(name, "axe","5", 90, 40, 35, 30, 5) {}  // Custom health, strength, magic, and agility for Divina
 
     // Overridden methods
     void attack(Character& target) override {
@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif // DIVINA_H
+#endif // DIVINA_H 

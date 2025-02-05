@@ -6,7 +6,7 @@
 class Flame : public Character {
 public:
     Flame(const std::string& name)
-        : Character(name, "sword", 100, 30, 30, 15) {}  // Custom health, strength, magic, and agility for Flame
+        : Character(name, "5" , "sword", 100, 30, 30, 15, 5) {}  // Custom health, strength, magic, and agility for Flame
 
     // Overridden methods
     void attack(Character& target) override {
@@ -24,4 +24,4 @@ public:
     }
 };
 
-#endif // FLAME_H
+#endif // FLAME_H 

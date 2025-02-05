@@ -1,30 +1,28 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <ctime>
+#include <vector>
+#include <cstdlib>
+#include "Player.h"
 
-class Character {
+class Enemy : public Character {
 protected:
-    std::string name;
-    std::string weapon;
-    std::string lvl;
-    int health;
-    int strength;
-    int agility;
-    int magic;
-    int level;
+    bool Dead = false;
+
 
 public:
+
     // Constructor to initialize the character
-    Character(std::string name, std::string lvl, std::string weapon, int health, int strength, int agility, int magic, int level)
-        : name(name),lvl(lvl), weapon(weapon), health(health), strength(strength), agility(agility), magic(magic), level(level) {}
+    Enemy(std::string name,std::string weapon,std::string lvl, int health, int strength, int agility, int magic, int level)
+        : Character(name, weapon, lvl, health, strength, agility, magic, level) { }  // Pass arguments to the base class constructor
 
     // Virtual Destructor (useful for inheritance)
-    virtual ~Character() {}
+    virtual ~Enemy() {}
 
     // Getters
     std::string getname() const { return name; }
     std::string getweapon() const { return weapon; }
-    std::string getLvl() const { return lvl; }
     int getHealth() const { return health; }
     int getStrength() const { return strength; }
     int getAgility() const { return agility; }
@@ -55,9 +53,23 @@ public:
         health -= damage;
         if (health < 0) health = 0; // Prevent negative health
     }
+    virtual void Death(){
+        if(health = 0)
+        {
+            Dead = true;
+        }
+    }
+
+    std::vector<Enemy*> multiply(int count) {
+        std::vector<Enemy*> enemies;
+        for (int i = 0; i < count; ++i) {
+            enemies.push_back(new Enemy(name + " " + std::to_string(i + 1), weapon,lvl, health, strength, agility, magic, level));
+        }
+        return enemies;  // Return the vector of enemies
+    }
 
     // Pure virtual method for displaying character info
     virtual void displayInfo() const {
         std::cout << "Character: " << name << ", Weapon: " << weapon << ", Health: " << health << ", Strength: " << strength << ", Agility: " << agility << ", Magic: " << magic << std::endl;
     }
-};  
+};
