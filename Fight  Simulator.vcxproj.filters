@@ -62,5 +62,8 @@
     <ClInclude Include="Jolt.h">
       <Filter>Header Files\Players</Filter>
     </ClInclude>
+    <ClInclude Include="Combat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
