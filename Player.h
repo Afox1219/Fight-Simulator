@@ -12,6 +12,8 @@ protected:
     int agility;
     int magic;
     int level;
+    int movespd;
+    bool isInCombat;
 
 public:
     // Constructor to initialize the character
@@ -20,6 +22,12 @@ public:
 
     // Virtual Destructor (useful for inheritance)
     virtual ~Character() {}
+    
+    Character();
+    void updateExploration();
+    void updateCombat();
+    void draw(sf::RenderWindow& window);
+    sf::RectangleShape shape;
 
     // Getters
     std::string getname() const { return name; }
@@ -60,4 +68,8 @@ public:
     virtual void displayInfo() const {
         std::cout << "Character: " << name << ", Weapon: " << weapon << ", Health: " << health << ", Strength: " << strength << ", Agility: " << agility << ", Magic: " << magic << std::endl;
     }
+
+
+
+
 };  

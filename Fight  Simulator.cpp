@@ -7,8 +7,10 @@
 #include "Jolt.h"
 #include "Chlora.h"
 #include "Divina.h"
+#include "player.h"
 #include "Combat.h"
 #include "Slime.h"
+#include "Exploration.h"
 
 using namespace std;
 
@@ -24,48 +26,10 @@ int choice;
 int choice3;
 int numEnemies;
 
-class Tile {
-public:
-    sf::RectangleShape shape;
-    int type;
-
-    Tile(int x, int y, int type) : type(type) {
-        shape.setSize(sf::Vector2f(32.f, 32.f)); // Size of each tile (32x32)
-        shape.setPosition(x * 32.f, y * 32.f); // Position each tile in the grid
-
-        // Set tile color based on type
-        if (type == 0) {
-            shape.setFillColor(sf::Color::Green); // Grass
-        }
-        else if (type == 1) {
-            shape.setFillColor(sf::Color::Blue); // Water
-        }
-        else if (type == 2) {
-            shape.setFillColor(sf::Color(100, 100, 100)); // Rock
-        }
-    }
-};
 
 int main() {
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Tile Map Example");
-
-    // Define the map layout (simple 5x5 grid)
-    std::vector<std::vector<int>> map = {
-        {0, 1, 0, 2, 0},
-        {1, 0, 0, 0, 1},
-        {0, 2, 0, 1, 0},
-        {2, 0, 1, 0, 2},
-        {0, 1, 0, 0, 0}
-    };
-
-    // Create vector of Tile objects based on the map layout
-    std::vector<Tile> tiles;
-    for (int y = 0; y < map.size(); ++y) {
-        for (int x = 0; x < map[y].size(); ++x) {
-            tiles.push_back(Tile(x, y, map[y][x]));
-        }
-    }
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Fiery Flame");
 
 
     while (window.isOpen()) {
@@ -76,16 +40,13 @@ int main() {
             }
         }
 
+        Exploration exploration;
+        Character character;
 
         window.clear();
-        for (auto& tile : tiles) {
-            window.draw(tile.shape);
-        }
+        exploration.draw(window);
+        character.draw(window);
         window.display();
-    }
-
-
-
 
 
     Character* Player = nullptr;
@@ -159,5 +120,10 @@ int main() {
     for (auto enemy : enemies) {
         delete enemy;
     }
+
+    
+    }
+
+
     return 0;
 }

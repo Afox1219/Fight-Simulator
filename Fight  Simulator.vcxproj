@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Combat.cpp" />
+    <ClCompile Include="Exploration.cpp" />
     <ClCompile Include="Fight  Simulator.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="Jolt.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Chlora.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="Divina.h" />
+    <ClInclude Include="Exploration.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Slime.h" />

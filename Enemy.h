@@ -4,12 +4,18 @@
 #include <ctime>
 #include <vector>
 #include <cstdlib>
-#include "Player.h"
 
 class Enemy : public Character {
 protected:
     bool Dead = false;
-
+    std::string name;
+    std::string weapon;
+    std::string lvl;
+    int health;
+    int strength;
+    int agility;
+    int magic;
+    int level;
 
 public:
 
@@ -70,6 +76,6 @@ public:
 
     // Pure virtual method for displaying character info
     virtual void displayInfo() const {
-        std::cout << "Character: " << name << ", Weapon: " << weapon << ", Health: " << health << ", Strength: " << strength << ", Agility: " << agility << ", Magic: " << magic << std::endl;
+        std::cout << "Enemy: " << name << ", Weapon: " << weapon << ", Health: " << health << ", Strength: " << strength << ", Agility: " << agility << ", Magic: " << magic << std::endl;
     }
 };
